@@ -1,23 +1,22 @@
-import { useState } from 'react';
 import './App.css';
-import {useDispatch} from 'react-redux';
-
+import {useDispatch,useSelector} from 'react-redux';
+import Box from './component/Box';
 
 function App() {
-  const [number,setNumber] = useState(0);
   const dispatch = useDispatch();
+  const count = useSelector(state=>state.count);
 
 
-  const count = ()=>{
+  const increase = ()=>{
     dispatch({type : "INCREMENT"})
-    setNumber(number + 1)
   }
   return (
     <div className="App">
       <button onClick={()=>{
-        count();
+        increase()
       }}>따봉버튼</button>
-      <p>클릭시 버튼이 올라갑니다👍 {number}</p>      
+      <p>클릭시 버튼이 올라갑니다👍 {count}</p>
+      <Box/>      
     </div>
   );
 }
